@@ -1,12 +1,9 @@
 async function retryRequest(promiseFunc, nrOfRetries) {
-    let i = 1;
-    promiseFunc.then(success => success)
-        .catch(fail => {
-            if (i <= nrOfRetries){
-                i++;
-                retryRequest(promiseFunc, nrOfRetries)
-            }
-        })
+    let p = Promise.reject();
+    for (let  i = 0; i < nrOfRetries; i++){
+        p = p.catch(promiseFunc);
+    }
+    return p.then(promiseFunc)
 }
 
 let hasFailed = false;

@@ -1,16 +1,15 @@
 function johnMary(str) {
-    let mcount = 0, jcount = 0
-    jcount = str.match(/John/gi)
-    if (!!jcount)
-        jcount = jcount.length;
+    let maryCount, johnCount
+    johnCount = str.match(/John/gi)
+    if (!!johnCount)
+        johnCount = johnCount.length;
 
 
-    mcount = str.match(/Mary/gi)
-    if (!!mcount)
-        mcount = mcount.length;
+    maryCount = str.match(/Mary/gi)
+    if (!!maryCount)
+        maryCount = maryCount.length;
 
-    console.log(jcount, mcount)
-    return jcount === mcount;
+    return johnCount === maryCount;
 }
 
 console.log(johnMary("John&Marymary"));
